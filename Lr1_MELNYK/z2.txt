@@ -1,0 +1,43 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+int random(int min, int max)
+{
+   static bool first = true;
+   if (first) 
+   {  
+      srand( time(NULL) ); 
+      first = false;
+   }
+   return min + rand() % (( max + 1 ) - min);
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    int *arr=new int[n];
+    for(int i=0; i<n; ++i)
+    {
+        arr[i]=random(-50,50);
+        cout<<arr[i]<<" ";
+    }
+    int min=0;
+    for(int i=0; i<n; ++i)
+    {
+        if(arr[i]%5==0) break;
+        if(arr[i]<=arr[min]) min=i;
+    }
+    cout<<"\nНомер першого мінімального елемента серед додатних елементів, розташованих до першого елемента, кратного п'яти = "<<min+1<<"("<<min<<")";
+    delete[] arr;
+    return 0;
+}
