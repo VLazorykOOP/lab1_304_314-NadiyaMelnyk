@@ -45,5 +45,6 @@ int main()
         }
     }
     cout<<"\nSum = "<<sum<<" Dob = "<<dob;
+    delete[] arr;
     return 0;
 }
